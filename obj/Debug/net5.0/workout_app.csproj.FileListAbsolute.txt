@@ -1,0 +1,16 @@
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.exe
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.deps.json
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.runtimeconfig.json
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.runtimeconfig.dev.json
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.dll
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\ref\workout_app.dll
+D:\OneDrive\Documents\CS\workout_app\bin\Debug\net5.0\workout_app.pdb
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.csproj.AssemblyReference.cache
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.AssemblyInfoInputs.cache
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.AssemblyInfo.cs
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.csproj.CoreCompileInputs.cache
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.dll
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\ref\workout_app.dll
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.pdb
+D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.genruntimeconfig.cache
