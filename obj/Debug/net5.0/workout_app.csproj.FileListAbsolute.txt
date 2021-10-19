@@ -14,3 +14,19 @@ D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.dll
 D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\ref\workout_app.dll
 D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.pdb
 D:\OneDrive\Documents\CS\workout_app\obj\Debug\net5.0\workout_app.genruntimeconfig.cache
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.csproj.AssemblyReference.cache
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.AssemblyInfoInputs.cache
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.AssemblyInfo.cs
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.csproj.CoreCompileInputs.cache
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.dll
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\ref\workout_app.dll
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.pdb
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.exe
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.deps.json
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.runtimeconfig.json
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.runtimeconfig.dev.json
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.dll
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\ref\workout_app.dll
+C:\Users\mieka\Documents\Coding Projects\workout_app\bin\Debug\net5.0\workout_app.pdb
+C:\Users\mieka\Documents\Coding Projects\workout_app\obj\Debug\net5.0\workout_app.genruntimeconfig.cache

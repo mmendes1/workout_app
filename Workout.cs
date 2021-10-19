@@ -4,24 +4,36 @@ using System.Threading.Tasks;
 
 namespace workout_app
 {
-    public class Workout
+    class Workout
     {
+        private String line;
         public Workout() { }
 
-        public Workout(string name, string type, int repNum) {
+        Workout(string name, string type, int repNum) {
             workoutName = name;
             workoutType = type;
             workoutRepNum = repNum;
         }
 
-        public static async Task writeToFile(Workout workout) {
+        static async Task recordData(Workout workout) {
             using StreamWriter file = new("Workout_Data.txt", append: true);
             await file.WriteLineAsync(workout.ToString());
+                file.Close();
         }
 
-        public string workoutName {get; set; }
-        public string workoutType {get; set; }
-        public int workoutRepNum {get; set; }
+        public void printWorkouts () {
+            using StreamReader file = new("Workout_Data.txt");
+            do {
+                line = file.ReadLine();
+                Console.WriteLine(line);
+            } while(line != null);
+            
+            file.Close();
+        }
+
+        string workoutName {get; set; }
+        string workoutType {get; set; }
+        int workoutRepNum {get; set; }
 
         public override string ToString() => workoutName + " " + workoutType + " " + workoutRepNum;
     }

@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/bin/Debug/net5.0/workout_app.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
