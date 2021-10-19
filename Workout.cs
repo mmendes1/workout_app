@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace workout_app
 {
@@ -29,6 +30,14 @@ namespace workout_app
             } while(line != null);
             
             file.Close();
+        }
+
+        public void changeReps(String line, String target) {
+            for(int i = 0; i < line.Length; i++) 
+            {
+                //String replaced = Regex.Replace()
+                //Confusing, watch youtube about Regex
+            }
         }
 
         string workoutName {get; set; }

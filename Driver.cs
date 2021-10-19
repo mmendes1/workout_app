@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 //Next: User input
 namespace workout_app
@@ -8,14 +9,28 @@ namespace workout_app
         static void Main()
         {
             Workout temp = new Workout();
-            String userIn = "";
+            String userIn, line, newReps;
+            StreamReader file = new("Workout_Data.txt");
 
             Console.WriteLine("Hello, please select a function...");
             Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Exit");
             do {
                     userIn = Console.ReadLine();
                         if(userIn == "1") { temp.printWorkouts(); Console.WriteLine(); }
-                        else if (userIn == "2") { Console.WriteLine("To be implemented\n"); }
+                        else if (userIn == "2") 
+                        { 
+                            Console.WriteLine("Please enter the name of the workout.");
+                            String workoutChoice = Console.ReadLine();
+                            do {
+                                line = file.ReadLine();
+                                if(line.Contains(workoutChoice)) 
+                                {
+                                    Console.WriteLine("Enter the new rep count.");
+                                    newReps = file.ReadLine();
+                                    temp.changeReps(line, newReps);
+                                }
+                            } while (line != null);
+                        }
                         else if (userIn == "3") Console.WriteLine("Enjoy the workout!\n");
                         else Console.WriteLine("That is not a valid input, try again.\n");    
             } while(userIn != "3");
