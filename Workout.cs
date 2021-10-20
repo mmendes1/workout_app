@@ -7,18 +7,24 @@ namespace workout_app
 {
     class Workout
     {
-        private String line;
+        private String line, workoutName, workoutType;
+        private int lineCount = 0, workoutRepNum, lineNum;
         public Workout() { }
 
-        Workout(string name, string type, int repNum) {
+        public Workout(string name, string type, int repNum) {
             workoutName = name;
             workoutType = type;
             workoutRepNum = repNum;
+            lineNum = -1;
         }
 
-        static async Task recordData(Workout workout) {
+        public async Task recordData() {
+            checkLineCount();
+            lineNum = lineCount;
+            
             using StreamWriter file = new("Workout_Data.txt", append: true);
-            await file.WriteLineAsync(workout.ToString());
+            Console.WriteLine("Does it even this????");
+            await file.WriteLineAsync(ToString());
                 file.Close();
         }
 
@@ -39,11 +45,34 @@ namespace workout_app
                 //Confusing, watch youtube about Regex
             }
         }
+        
+        public void checkLineCount() 
+        {
+            using StreamReader file = new StreamReader("Workout_Data.txt");
+            do {
+                line = file.ReadLine();
+                lineCount++;
+            } while(line != null);
+            file.Close();
+        }
 
-        string workoutName {get; set; }
-        string workoutType {get; set; }
-        int workoutRepNum {get; set; }
+        string WorkoutName {
+            get{ return workoutName; } 
+            set{ WorkoutName = value; }
+        }
+        string WorkoutType {
+            get{ return workoutType; } 
+            set{workoutType = value; } 
+        }
+        int WorkoutRepNum {
+            get{ return workoutRepNum; } 
+            set{ workoutRepNum = value; } 
+        }
+        public int LineNum {
+           get{ return lineNum; }
+           set{ lineNum = value; } 
+        }
 
-        public override string ToString() => workoutName + " " + workoutType + " " + workoutRepNum;
+        public override string ToString() => lineNum + ") " + workoutName + " " + workoutType + " " + workoutRepNum;
     }
 }

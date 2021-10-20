@@ -6,14 +6,14 @@ namespace workout_app
 {
     class Driver
     {
-        static void Main()
+        static void Main(string[] args)
         {
             Workout temp = new Workout();
             String userIn, line, newReps;
             StreamReader file = new("Workout_Data.txt");
 
             Console.WriteLine("Hello, please select a function...");
-            Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Exit");
+            Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   0. Exit");
             do {
                     userIn = Console.ReadLine();
                         if(userIn == "1") { temp.printWorkouts(); Console.WriteLine(); }
@@ -31,14 +31,18 @@ namespace workout_app
                                 }
                             } while (line != null);
                         }
-                        else if (userIn == "3") Console.WriteLine("Enjoy the workout!\n");
+                        else if (userIn == "3")
+                        {
+                            Console.WriteLine("HERE ADD FUNCTION FOR ADDING WORKOUT");
+                        }
+                        else if (userIn == "0") Console.WriteLine("Enjoy the workout!\n");
                         else Console.WriteLine("That is not a valid input, try again.\n");    
-            } while(userIn != "3");
+            } while(userIn != "0");
         }
     }
 }
  /**
-             Workout pushups = new Workout ("Push-ups", "Back", 24);
+        Workout pushups = new Workout ("Push-ups", "Back", 24);
              Workout situps = new Workout ("Sit-ups", "Abs", 17);
              Workout curls = new Workout ("Curls", "Biceps", 26);
              Workout pullups = new Workout ("Pull-ups", "Shoulders", 19);
@@ -46,12 +50,19 @@ namespace workout_app
              Workout squats = new Workout ("Squats", "Legs", 14);
              Workout burndown = new Workout ("Shoulder-press", "Shoulders", 27);
 
-                //Console.WriteLine(curls.ToString());
-                recordData(pushups);
-                recordData(situps);
-                recordData(curls);
-                recordData(pullups);
-                recordData(diamonds);
-                recordData(squats);
-                recordData(burndown);
-                **/
+                pushups.recordData().Wait();
+                    Console.WriteLine(pushups.LineNum);
+                situps.recordData().Wait();
+                    Console.WriteLine(situps.LineNum);
+                curls.recordData().Wait();
+                    Console.WriteLine(curls.LineNum);
+                pullups.recordData().Wait();
+                    Console.WriteLine(pullups.LineNum);
+                diamonds.recordData().Wait();
+                    Console.WriteLine(diamonds.LineNum);
+                squats.recordData().Wait();
+                    Console.WriteLine(squats.LineNum);
+                burndown.recordData().Wait();
+                    Console.WriteLine(burndown.LineNum);
+     
+ **/
