@@ -9,15 +9,16 @@ namespace workout_app
         static void Main(string[] args)
         {
             Workout temp = new Workout();
-            String userIn, line, newReps;
+            String choice, line, userIn;
+            String[] userInSplit;
             StreamReader file = new("Workout_Data.txt");
 
             Console.WriteLine("Hello, please select a function...");
-            Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   0. Exit");
             do {
-                    userIn = Console.ReadLine();
-                        if(userIn == "1") { temp.printWorkouts(); Console.WriteLine(); }
-                        else if (userIn == "2") 
+                Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   0. Exit");
+                    choice = Console.ReadLine();
+                        if(choice == "1") { temp.printWorkouts(); Console.WriteLine(); }
+                        else if (choice == "2") 
                         { 
                             Console.WriteLine("Please enter the name of the workout.");
                             String workoutChoice = Console.ReadLine();
@@ -26,18 +27,25 @@ namespace workout_app
                                 if(line.Contains(workoutChoice)) 
                                 {
                                     Console.WriteLine("Enter the new rep count.");
-                                    newReps = file.ReadLine();
-                                    temp.changeReps(line, newReps);
+                                    userIn = file.ReadLine();
+                                    temp.changeReps(line, userIn);
                                 }
                             } while (line != null);
+                            file.Close();
                         }
-                        else if (userIn == "3")
+                        else if (choice == "3")
                         {
-                            Console.WriteLine("HERE ADD FUNCTION FOR ADDING WORKOUT");
+                            Console.WriteLine("Please enter the workout in the following format...\nName Of Workout:Muscle Group:Reps");
+                            userIn = Console.ReadLine();
+                                file.Close();
+                            userInSplit = userIn.Split(':');
+                                Workout newWorkout = new Workout(userInSplit[0], userInSplit[1], int.Parse(userInSplit[2]));
+                                newWorkout.recordData().Wait();
+                            file.Close();
                         }
-                        else if (userIn == "0") Console.WriteLine("Enjoy the workout!\n");
+                        else if (choice == "0") Console.WriteLine("Enjoy the workout!\n");
                         else Console.WriteLine("That is not a valid input, try again.\n");    
-            } while(userIn != "0");
+            } while(choice != "0");
         }
     }
 }
