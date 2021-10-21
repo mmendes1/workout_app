@@ -1,7 +1,11 @@
 ﻿using System;
 using System.IO;
 
-//Next: User input
+/**
+Notes
+________________
+Can expand using statements and remove some of the file closing nonsense
+**/
 namespace workout_app
 {
     class Driver
@@ -11,7 +15,6 @@ namespace workout_app
             Workout temp = new Workout();
             String choice, line, userIn;
             String[] userInSplit;
-            StreamReader file = new("Workout_Data.txt");
 
             Console.WriteLine("Hello, please select a function...");
             do {
@@ -20,21 +23,26 @@ namespace workout_app
                         if(choice == "1") { temp.printWorkouts(); Console.WriteLine(); }
                         else if (choice == "2") 
                         { 
+                            using StreamReader file = new("Workout_Data.txt");
                             Console.WriteLine("Please enter the name of the workout.");
                             String workoutChoice = Console.ReadLine();
                             do {
                                 line = file.ReadLine();
+                                    Console.WriteLine("Line: " + workoutChoice);
                                 if(line.Contains(workoutChoice)) 
                                 {
+                                    file.Close();
                                     Console.WriteLine("Enter the new rep count.");
-                                    userIn = file.ReadLine();
+                                    userIn = Console.ReadLine();
                                     temp.changeReps(line, userIn);
+                                        break;
                                 }
                             } while (line != null);
                             file.Close();
                         }
                         else if (choice == "3")
                         {
+                            using StreamReader file = new("Workout_Data.txt");
                             Console.WriteLine("Please enter the workout in the following format...\nName Of Workout:Muscle Group:Reps");
                             userIn = Console.ReadLine();
                                 file.Close();

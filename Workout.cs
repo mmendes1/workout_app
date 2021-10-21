@@ -38,12 +38,22 @@ namespace workout_app
             file.Close();
         }
 
-        public void changeReps(String line, String target) {
-            for(int i = 0; i < line.Length; i++) 
-            {
+        public async void changeReps(String line, String newReps) {
+                String[] splitLine = line.Split(" ");
+                splitLine[3] = newReps;
+                String frankenstein = splitLine [0] + " " + splitLine[1] + " " + splitLine[2] + " " + splitLine[3];
+                    using StreamWriter file = new StreamWriter("Workout_Data.txt");
+                    do{
+                        line = file.NewLine;
+                        if(line.Contains(splitLine[0])) 
+                        { 
+                           await file.WriteLineAsync(frankenstein);
+                                break; 
+                        }
+                    }while(line != null);
+                    file.Close();
                 //String replaced = Regex.Replace()
                 //Confusing, watch youtube about Regex
-            }
         }
         
         public void checkLineCount() 
