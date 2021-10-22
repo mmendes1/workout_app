@@ -8,7 +8,9 @@ namespace workout_app
     class Workout
     {
         private String line, workoutName, workoutType;
-        private int lineCount = 0, workoutRepNum, lineNum;
+        private String[] splitLine = new String[3];
+        private Boolean lineCountUpdate = false;
+        private int lineCount = 0, workoutRepNum, lineNum, inc;
         public Workout() { }
 
         public Workout(string name, string type, int repNum) {
@@ -19,11 +21,8 @@ namespace workout_app
         }
 
         public async Task recordData() {
-            checkLineCount();
             lineNum = lineCount;
-            
             using StreamWriter file = new("Workout_Data.txt", append: true);
-            Console.WriteLine("Does it even this????");
             await file.WriteLineAsync(ToString());
                 file.Close();
         }
@@ -38,22 +37,31 @@ namespace workout_app
             file.Close();
         }
 
-        public async void changeReps(String line, String newReps) {
-                String[] splitLine = line.Split(" ");
+        public async void changeReps(int lineNum, String newReps) {  
+            inc = 0;  
+            if(!lineCountUpdate) checkLineCount();
+
+            String[] accesableData = new String[lineCount]; //Yucko temp fix
+                using StreamReader lineReader = new StreamReader("Workout_Data.txt"); {
+                   do{
+                       line = lineReader.ReadLine();
+                       accesableData[inc] = line;
+                       Console.WriteLine(accesableData[inc]);
+                        inc++;
+                   } while(line != null);
+                } lineReader.Close();
+
+                splitLine = accesableData[lineNum - 1].Split(" ");
                 splitLine[3] = newReps;
+
                 String frankenstein = splitLine [0] + " " + splitLine[1] + " " + splitLine[2] + " " + splitLine[3];
-                    using StreamWriter file = new StreamWriter("Workout_Data.txt");
-                    do{
-                        line = file.NewLine;
-                        if(line.Contains(splitLine[0])) 
-                        { 
-                           await file.WriteLineAsync(frankenstein);
-                                break; 
-                        }
-                    }while(line != null);
+                    accesableData[lineNum - 1] = frankenstein;
+                using StreamWriter file = new StreamWriter("Workout_Data.txt"); 
+                for(int i = 0; i < accesableData.Length - 1; i++) 
+                {
+                    await file.WriteLineAsync(accesableData[i]);
+                }
                     file.Close();
-                //String replaced = Regex.Replace()
-                //Confusing, watch youtube about Regex
         }
         
         public void checkLineCount() 
@@ -64,6 +72,7 @@ namespace workout_app
                 lineCount++;
             } while(line != null);
             file.Close();
+            lineCountUpdate = true;
         }
 
         string WorkoutName {

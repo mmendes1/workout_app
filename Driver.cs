@@ -28,13 +28,13 @@ namespace workout_app
                             String workoutChoice = Console.ReadLine();
                             do {
                                 line = file.ReadLine();
-                                    Console.WriteLine("Line: " + workoutChoice);
+                                int lineNum = int.Parse(line.Substring(0,1));
                                 if(line.Contains(workoutChoice)) 
                                 {
                                     file.Close();
                                     Console.WriteLine("Enter the new rep count.");
                                     userIn = Console.ReadLine();
-                                    temp.changeReps(line, userIn);
+                                    temp.changeReps(lineNum, userIn);
                                         break;
                                 }
                             } while (line != null);
