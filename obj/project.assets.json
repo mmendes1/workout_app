@@ -8,23 +8,26 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mieka\\.nuget\\packages\\": {}
+    "C:\\Users\\there\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mieka\\Documents\\Coding Projects\\workout_app\\workout_app.csproj",
+      "projectUniqueName": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
       "projectName": "workout_app",
-      "projectPath": "C:\\Users\\mieka\\Documents\\Coding Projects\\workout_app\\workout_app.csproj",
-      "packagesPath": "C:\\Users\\mieka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mieka\\Documents\\Coding Projects\\workout_app\\obj\\",
+      "projectPath": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
+      "packagesPath": "C:\\Users\\there\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mieka\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\there\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
@@ -55,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

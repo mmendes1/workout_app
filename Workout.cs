@@ -10,7 +10,8 @@ namespace workout_app
         private String line, workoutName, workoutType;
         private String[] splitLine = new String[3];
         private Boolean lineCountUpdate = false;
-        private int lineCount = 0, workoutRepNum, lineNum, inc;
+        private int workoutRepNum, lineNum, inc;
+        public int lineCount = 0;
         public Workout() { }
 
         public Workout(string name, string type, int repNum) {
@@ -61,11 +62,12 @@ namespace workout_app
                 {
                     await file.WriteLineAsync(accesableData[i]);
                 }
-                    file.Close();
+                file.Close();
         }
         
         public void checkLineCount() 
         {
+            lineCount = 0;
             using StreamReader file = new StreamReader("Workout_Data.txt");
             do {
                 line = file.ReadLine();
@@ -91,6 +93,8 @@ namespace workout_app
            get{ return lineNum; }
            set{ lineNum = value; } 
         }
+
+        public int getLineCount() { checkLineCount(); return lineCount; }
 
         public override string ToString() => lineNum + ") " + workoutName + " " + workoutType + " " + workoutRepNum;
     }

@@ -18,7 +18,7 @@ namespace workout_app
 
             Console.WriteLine("Hello, please select a function...");
             do {
-                Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   0. Exit");
+                Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   4. Generate a random workout\n   0. Exit");
                     choice = Console.ReadLine();
                         if(choice == "1") { temp.printWorkouts(); Console.WriteLine(); }
                         else if (choice == "2") 
@@ -50,6 +50,30 @@ namespace workout_app
                                 Workout newWorkout = new Workout(userInSplit[0], userInSplit[1], int.Parse(userInSplit[2]));
                                 newWorkout.recordData().Wait();
                             file.Close();
+                        }
+                        else if (choice == "4") 
+                        {
+                            String[] workouts = new String[temp.getLineCount() - 1];
+
+                            int pos = 0;
+                            using StreamReader file = new("Workout_Data.txt"); {
+                                do {
+                                    line = file.ReadLine();
+                                    workouts[pos] = line;
+                                    pos++;
+                                }   while(line != null && pos < workouts.Length); 
+                            }
+                            for(int i = workouts.Length - 1; i > 0; i--) 
+                            {
+                                Random rand = new Random();
+                                pos = rand.Next(0, i + 1);
+                               
+                                String swap = workouts[i];
+                                    workouts[i] = workouts[pos];
+                                    workouts[pos] = swap;
+                            }
+                            for(int i = 0; i < workouts.Length; i++) { Console.WriteLine(workouts[i]); }
+                            Console.WriteLine("\n");
                         }
                         else if (choice == "0") Console.WriteLine("Enjoy the workout!\n");
                         else Console.WriteLine("That is not a valid input, try again.\n");    
