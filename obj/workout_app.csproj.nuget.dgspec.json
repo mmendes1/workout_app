@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj": {}
+    "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj": {}
   },
   "projects": {
-    "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj": {
+    "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
+        "projectUniqueName": "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
         "projectName": "workout_app",
-        "projectPath": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
-        "packagesPath": "C:\\Users\\there\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\there\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\obj\\",
+        "projectPath": "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
+        "packagesPath": "C:\\Users\\mieka\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\there\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\mieka\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

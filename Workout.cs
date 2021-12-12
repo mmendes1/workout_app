@@ -21,28 +21,49 @@ namespace workout_app
             lineNum = -1;
         }
 
-        public async Task recordData() {
-            lineNum = lineCount;
-            using StreamWriter file = new("Workout_Data.txt", append: true);
-            await file.WriteLineAsync(ToString());
+        public async Task recordData(bool homeWorkout) {
+            if(lineCount == 0) lineCount++;
+
+            if(homeWorkout)
+            {
+                lineNum = lineCount;
+                using StreamWriter file = new("Workout_Data.txt", append: true);
+                await file.WriteLineAsync(ToString());
+                    file.Close();
+            } else if(!homeWorkout) {
+                lineNum = lineCount;
+                using StreamWriter file = new("gymWorkout_Data.txt", append: true);
+                await file.WriteLineAsync(ToString());
+                    file.Close();
+            }
+        }
+
+        public void printWorkouts (bool homeWorkout) {
+            if(homeWorkout) 
+            {
+                using StreamReader file = new("Workout_Data.txt");
+                do {
+                    line = file.ReadLine();
+                    Console.WriteLine(line);
+                } while(line != null);
                 file.Close();
+            } else if(!homeWorkout) {
+                 using StreamReader file = new("gymWorkout_Data.txt");
+                do {
+                    line = file.ReadLine();
+                    Console.WriteLine(line);
+                } while(line != null);
+                file.Close();
+            }    
         }
 
-        public void printWorkouts () {
-            using StreamReader file = new("Workout_Data.txt");
-            do {
-                line = file.ReadLine();
-                Console.WriteLine(line);
-            } while(line != null);
-            
-            file.Close();
-        }
-
-        public async void changeReps(int lineNum, String newReps) {  
+        public async void changeReps(int lineNum, String newReps, bool homeWorkout) {  
             inc = 0;  
             if(!lineCountUpdate) checkLineCount();
 
             String[] accesableData = new String[lineCount]; //Yucko temp fix
+
+            if(homeWorkout) {
                 using StreamReader lineReader = new StreamReader("Workout_Data.txt"); {
                    do{
                        line = lineReader.ReadLine();
@@ -63,6 +84,28 @@ namespace workout_app
                     await file.WriteLineAsync(accesableData[i]);
                 }
                 file.Close();
+            } else if(!homeWorkout) {
+                using StreamReader lineReader = new StreamReader("gymWorkout_Data.txt"); {
+                   do{
+                       line = lineReader.ReadLine();
+                       accesableData[inc] = line;
+                       Console.WriteLine(accesableData[inc]);
+                        inc++;
+                   } while(line != null);
+                } lineReader.Close();
+
+                splitLine = accesableData[lineNum - 1].Split(" ");
+                splitLine[3] = newReps;
+
+                String frankenstein = splitLine [0] + " " + splitLine[1] + " " + splitLine[2] + " " + splitLine[3];
+                    accesableData[lineNum - 1] = frankenstein;
+                using StreamWriter file = new StreamWriter("gymWorkout_Data.txt"); 
+                for(int i = 0; i < accesableData.Length - 1; i++) 
+                {
+                    await file.WriteLineAsync(accesableData[i]);
+                }
+                file.Close();
+            }
         }
         
         public void checkLineCount() 

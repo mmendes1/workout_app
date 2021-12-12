@@ -15,69 +15,121 @@ namespace workout_app
             Workout temp = new Workout();
             String choice, line, userIn;
             String[] userInSplit;
+            bool homeWorkout;
 
             Console.WriteLine("Hello, please select a function...");
             do {
-                Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   4. Generate a random workout\n   0. Exit");
-                    choice = Console.ReadLine();
-                        if(choice == "1") { temp.printWorkouts(); Console.WriteLine(); }
-                        else if (choice == "2") 
-                        { 
-                            using StreamReader file = new("Workout_Data.txt");
-                            Console.WriteLine("Please enter the name of the workout.");
-                            String workoutChoice = Console.ReadLine();
-                            do {
-                                line = file.ReadLine();
-                                int lineNum = int.Parse(line.Substring(0,1));
-                                if(line.Contains(workoutChoice)) 
-                                {
+                Console.WriteLine("   1. Gym Workout\n   2. Home Work\n   0. Exit");
+                choice = Console.ReadLine();
+                if(choice == "1")
+                {
+                    do{
+                        homeWorkout = false;
+                        Console.WriteLine("   1. Print all workouts\n   2. Set a new starting weight.\n   3. Add a new workout\n   0. Exit");
+                        choice = Console.ReadLine();
+                            if(choice == "1") { temp.printWorkouts(homeWorkout); Console.WriteLine(); }
+                            else if (choice == "2") 
+                                { 
+                                    using StreamReader file = new("gymWorkout_Data.txt");
+                                    Console.WriteLine("Please enter the name of the workout.");
+                                    String workoutChoice = Console.ReadLine();
+                                    do {
+                                        line = file.ReadLine();
+                                        int lineNum = int.Parse(line.Substring(0,1));
+                                        if(line.Contains(workoutChoice)) 
+                                        {
+                                            file.Close();
+                                            Console.WriteLine("Enter the new starting weight.");
+                                            userIn = Console.ReadLine();
+                                            temp.changeReps(lineNum, userIn, homeWorkout);
+                                                break;
+                                        }
+                                    } while (line != null);
                                     file.Close();
-                                    Console.WriteLine("Enter the new rep count.");
-                                    userIn = Console.ReadLine();
-                                    temp.changeReps(lineNum, userIn);
-                                        break;
                                 }
-                            } while (line != null);
-                            file.Close();
-                        }
-                        else if (choice == "3")
-                        {
-                            using StreamReader file = new("Workout_Data.txt");
-                            Console.WriteLine("Please enter the workout in the following format...\nName Of Workout:Muscle Group:Reps");
-                            userIn = Console.ReadLine();
-                                file.Close();
-                            userInSplit = userIn.Split(':');
-                                Workout newWorkout = new Workout(userInSplit[0], userInSplit[1], int.Parse(userInSplit[2]));
-                                newWorkout.recordData().Wait();
-                            file.Close();
-                        }
-                        else if (choice == "4") 
-                        {
-                            String[] workouts = new String[temp.getLineCount() - 1];
+                                else if (choice == "3")
+                                {
+                                    using StreamReader file = new("gymWorkout_Data.txt");
+                                    Console.WriteLine("Please enter the workout in the following format...\nName Of Workout:Muscle Group:Weight");
+                                    userIn = Console.ReadLine();
+                                        file.Close();
+                                    userInSplit = userIn.Split(':');
+                                        Workout newWorkout = new Workout(userInSplit[0], userInSplit[1], int.Parse(userInSplit[2]));
+                                        newWorkout.recordData(homeWorkout).Wait();
+                                    file.Close();
+                                }
+                                else if(choice == "0") { Console.WriteLine("Enjoy the workout!\n"); }
+                                    else Console.WriteLine("That is not a valid input, try again.\n");    
+                        } while(choice != "0");
+                } 
+                else if(choice == "2") 
+                {
+                    do{
+                        homeWorkout = true;    
+                        Console.WriteLine("   1. Print all workouts\n   2. Set a rep count.\n   3. Add a new workout\n   4. Generate a random workout\n   0. Exit");
+                            choice = Console.ReadLine();
+                                if(choice == "1") { temp.printWorkouts(homeWorkout); Console.WriteLine(); }
+                                else if (choice == "2") 
+                                { 
+                                    using StreamReader file = new("Workout_Data.txt");
+                                    Console.WriteLine("Please enter the name of the workout.");
+                                    String workoutChoice = Console.ReadLine();
+                                    do {
+                                        line = file.ReadLine();
+                                        int lineNum = int.Parse(line.Substring(0,1));
+                                        if(line.Contains(workoutChoice)) 
+                                        {
+                                            file.Close();
+                                            Console.WriteLine("Enter the new rep count.");
+                                            userIn = Console.ReadLine();
+                                            temp.changeReps(lineNum, userIn, homeWorkout);
+                                                break;
+                                        }
+                                    } while (line != null);
+                                    file.Close();
+                                }
+                                else if (choice == "3")
+                                {
+                                    using StreamReader file = new("Workout_Data.txt");
+                                    Console.WriteLine("Please enter the workout in the following format...\nName Of Workout:Muscle Group:Reps");
+                                    userIn = Console.ReadLine();
+                                        file.Close();
+                                    userInSplit = userIn.Split(':');
+                                        Workout newWorkout = new Workout(userInSplit[0], userInSplit[1], int.Parse(userInSplit[2]));
+                                        newWorkout.recordData(homeWorkout).Wait();
+                                    file.Close();
+                                }
+                                else if (choice == "4") 
+                                {
+                                    String[] workouts = new String[temp.getLineCount() - 1];
 
-                            int pos = 0;
-                            using StreamReader file = new("Workout_Data.txt"); {
-                                do {
-                                    line = file.ReadLine();
-                                    workouts[pos] = line;
-                                    pos++;
-                                }   while(line != null && pos < workouts.Length); 
+                                    int pos = 0;
+                                    using StreamReader file = new("Workout_Data.txt"); {
+                                        do {
+                                            line = file.ReadLine();
+                                            workouts[pos] = line;
+                                            pos++;
+                                        }   while(line != null && pos < workouts.Length); 
+                                    }
+                                    for(int i = workouts.Length - 1; i > 0; i--) 
+                                    {
+                                        Random rand = new Random();
+                                        pos = rand.Next(0, i + 1);
+                                    
+                                        String swap = workouts[i];
+                                            workouts[i] = workouts[pos];
+                                            workouts[pos] = swap;
+                                    }
+                                    for(int i = 0; i < workouts.Length; i++) { Console.WriteLine(workouts[i]); }
+                                    Console.WriteLine("\n");
                             }
-                            for(int i = workouts.Length - 1; i > 0; i--) 
-                            {
-                                Random rand = new Random();
-                                pos = rand.Next(0, i + 1);
-                               
-                                String swap = workouts[i];
-                                    workouts[i] = workouts[pos];
-                                    workouts[pos] = swap;
-                            }
-                            for(int i = 0; i < workouts.Length; i++) { Console.WriteLine(workouts[i]); }
-                            Console.WriteLine("\n");
-                        }
-                        else if (choice == "0") Console.WriteLine("Enjoy the workout!\n");
-                        else Console.WriteLine("That is not a valid input, try again.\n");    
-            } while(choice != "0");
+                            else if (choice == "0") Console.WriteLine("Enjoy the workout!\n");
+                                else Console.WriteLine("That is not a valid input, try again.\n");    
+                    } while(choice != "0");
+                }
+                else if (choice == "0") Console.WriteLine("Enjoy the workout!\n");
+                    else Console.WriteLine("That is not a valid input, try again.\n");    
+            }while(choice !="0");
         }
     }
 }
