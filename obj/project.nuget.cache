@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kDiB8xY7jYjuPymwLQMUOMwzWpLoKDXQh3+xnZxgDmsyQWpfKNypHUUpbp8CpMOJ4KTSMaRB6RZO3pzUleukTw==",
+  "dgSpecHash": "HhtWB70kjpvyVzZSTnjnJBAiQn83AaedDHKzziU1e7EUzjUpVxKlZuEjd2wR/rnOdgrkHvbm+pcAoPuoOlKVUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\mieka\\OneDrive\\Documents\\CS\\Personal Projects\\workout_app\\workout_app.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mieka\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
   "logs": []
 }

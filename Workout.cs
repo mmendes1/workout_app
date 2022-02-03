@@ -22,6 +22,7 @@ namespace workout_app
         }
 
         public async Task recordData(bool homeWorkout) {
+            if(!lineCountUpdate) checkLineCount();
             if(lineCount == 0) lineCount++;
 
             if(homeWorkout)
@@ -139,6 +140,6 @@ namespace workout_app
 
         public int getLineCount() { checkLineCount(); return lineCount; }
 
-        public override string ToString() => lineNum + ") " + workoutName + " " + workoutType + " " + workoutRepNum;
+        public override string ToString() => lineNum + "|" + workoutName + "|" + workoutType + "|" + workoutRepNum;
     }
 }
